@@ -3,6 +3,11 @@ package test;
 import org.testng.Assert;
 
 import org.testng.annotations.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +21,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import javax.net.ssl.SSLException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class ReadWebpage {
 
@@ -39,6 +46,63 @@ public class ReadWebpage {
 		}
 
 	}
+	
+	@Test
+	public static void SecureSite() throws Exception {
+		String filePath = "./File/output2.xml";
+		String URL = Server + "/sitemap/secure-sitemap-index.xml";
+		System.out.println("Running Test Case SecureSite");
+		FileWriter(filePath, URL);
+		if (!(ReadFileXML(filePath))) {
+			Assert.fail("Secure Site Read Test Case failed");
+		}
+	}
+	
+	public static boolean ReadFileXML(String Filepath) {
+		try {
+			int count = 0;
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(Filepath);
+
+			doc.getDocumentElement().normalize();
+
+			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+
+			NodeList nList = doc.getElementsByTagName("sitemap");
+
+			System.out.println("----------------------------");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+
+				Node nNode = nList.item(temp);
+
+				System.out.println("\nCurrent Element :" + nNode.getNodeName());
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element eElement = (Element) nNode;
+					String Value = eElement.getElementsByTagName("loc").item(0).getTextContent();
+					System.out.println("loc : " + Value);
+					if (Value.contains("404")) {
+						System.out.println("success");
+						count++;
+					}
+				}
+
+			}
+			if (count > 0) {
+				System.out.println("404 found in file" + count + "times");
+				return false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
 
 	public static boolean ReadFileRobot(String Filepath) {
 		try {
