@@ -26,9 +26,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class ReadWebpage {
 
-	public static int count = 0, countBuffer = 0, countLine = 0;
-
-	// public static String filePath = "/home/surabhi/Desktop/output.txt";
 	public static BufferedReader br = null;
 
 	public static String line = "";
@@ -46,7 +43,7 @@ public class ReadWebpage {
 		}
 
 	}
-	
+
 	@Test
 	public static void SecureSite() throws Exception {
 		String filePath = "./File/output2.xml";
@@ -57,7 +54,7 @@ public class ReadWebpage {
 			Assert.fail("Secure Site Read Test Case failed");
 		}
 	}
-	
+
 	public static boolean ReadFileXML(String Filepath) {
 		try {
 			int count = 0;
@@ -67,7 +64,7 @@ public class ReadWebpage {
 
 			doc.getDocumentElement().normalize();
 
-			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
 			NodeList nList = doc.getElementsByTagName("sitemap");
 
@@ -77,7 +74,7 @@ public class ReadWebpage {
 
 				Node nNode = nList.item(temp);
 
-				System.out.println("\nCurrent Element :" + nNode.getNodeName());
+				//System.out.println("\nCurrent Element :" + nNode.getNodeName());
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
@@ -103,32 +100,32 @@ public class ReadWebpage {
 		return true;
 	}
 
-
 	public static boolean ReadFileRobot(String Filepath) {
+		int count = 0;
+
 		try {
 			br = new BufferedReader(new FileReader(Filepath));
 			try {
 				while ((line = br.readLine()) != null) {
-					countLine++;
-					// System.out.println(line);
-					String[] words = line.split(" ");
 
-					for (String word : words) {
+					if (line.contains("Disallow")) {
 
-						if (word.equals("Disallow:")) {
-							count++;
-							countBuffer++;
+						for (String word : line.split("Disallow")) {
+							if (word.equals(": /"))
+								count++;
+
 						}
 					}
 				}
-				if (countBuffer > 0) {
-					countBuffer = 0;
-
-					System.out.println("Disallow found" + count + "times");
+				
+				
+				if (count > 0) {
+					System.out.println("Dissalow:/ was present at "+ line);
 					br.close();
 					return false;
 
 				}
+				System.out.println("Disallow: / found " + count + " times");
 
 				br.close();
 				return true;
