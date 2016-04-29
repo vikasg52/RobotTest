@@ -53,14 +53,4 @@ Disallow: /member/agenturl.php?mid=*
 Disallow: /member/agenturl.php?start=*
 
 
-#Sitemap: http://www.makaan.com/sitemap.xml
-#Sitemap: http://www.makaan.com/city-buy-sitemaps/sitemap-1.xml 
-#Sitemap: http://www.makaan.com/city-rent-sitemaps/sitemap-1.xml 
-#Sitemap: http://www.makaan.com/subcity-buy-sitemaps/sitemap-1.xml 
-#Sitemap: http://www.makaan.com/subcity-rent-sitemaps/sitemap-1.xml 
-#Sitemap: http://www.makaan.com/loc-buy-sitemaps/sitemap-1.xml 
-#Sitemap: http://www.makaan.com/loc-buy-sitemaps/sitemap-2.xml 
-#Sitemap: http://www.makaan.com/loc-buy-sitemaps/sitemap-3.xml 
-#Sitemap: http://www.makaan.com/loc-buy-sitemaps/sitemap-4.xml 
-#Sitemap: http://www.makaan.com/loc-rent-sitemaps/sitemap-1.xml
-#Sitemap: http://www.makaan.com/xml/microsite-urls.xml
+Sitemap: https://www.makaan.com/sitemap/secure-sitemap-index.xml
