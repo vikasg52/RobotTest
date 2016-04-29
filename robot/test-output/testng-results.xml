@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1666" started-at="2016-04-29T12:29:49Z" finished-at="2016-04-29T12:29:51Z">
+  <suite name="Default suite" duration-ms="1406" started-at="2016-04-29T12:40:38Z" finished-at="2016-04-29T12:40:39Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1666" started-at="2016-04-29T12:29:49Z" finished-at="2016-04-29T12:29:51Z">
+    <test name="Default test" duration-ms="1406" started-at="2016-04-29T12:40:38Z" finished-at="2016-04-29T12:40:39Z">
       <class name="test.ReadWebpage">
-        <test-method status="PASS" signature="RobotFile()[pri:0, instance:test.ReadWebpage@2389c90f]" name="RobotFile" duration-ms="1386" started-at="2016-04-29T17:59:49Z" finished-at="2016-04-29T17:59:50Z">
+        <test-method status="PASS" signature="RobotFile()[pri:0, instance:test.ReadWebpage@2aef0a03]" name="RobotFile" duration-ms="1254" started-at="2016-04-29T18:10:38Z" finished-at="2016-04-29T18:10:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- RobotFile -->
-        <test-method status="PASS" signature="SecureSite()[pri:0, instance:test.ReadWebpage@2389c90f]" name="SecureSite" duration-ms="257" started-at="2016-04-29T17:59:50Z" finished-at="2016-04-29T17:59:51Z">
+        <test-method status="PASS" signature="SecureSite()[pri:0, instance:test.ReadWebpage@2aef0a03]" name="SecureSite" duration-ms="129" started-at="2016-04-29T18:10:39Z" finished-at="2016-04-29T18:10:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SecureSite -->
